@@ -28,7 +28,7 @@ $(document).on('keyup', ".calcInput", function(e){
     var sumResult = document.getElementById("sum");
     var avgResult = document.getElementById("avg");
     var maxResult = document.getElementById("max");
-    var minResult = document.getElementById("min");
+    var minResult = document.getElementById("min"); 
     $('.calcInput').each(function(){
         sum += parseFloat(this.value);
 
