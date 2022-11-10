@@ -38,6 +38,6 @@ $(document).on('keyup', ".calcInput", function(e){
         //console.log(avg);
         //console.log(noChildren);
         sumResult.innerText = sum;
-        avgResult.innerHTML = avg;
+        avgResult.innerText = avg;
     })
 });
