@@ -1,35 +1,51 @@
-html, body{
-    margin: 0;
-    background-color: aliceblue;
-}
-
-.main-container{
-    background-color: azure;
+body{
     height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-items: center;
+}
+.slider-container{
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+.slide{
+    width: 100%;
+    max-width: 400px;
+    height: 300px;
+    position: absolute;
+    transition: all 0.5s;
+}
+.slide img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.photos-container{
-    display: flex;
-    flex-direction: row;
-}
-
-.slide-animation{
-    animation-name: slider-left;
-    animation-duration: 1s;
-    animation-timing-function: ease-in-out;
-}
-
-@keyframes slider-left {
-    0% {
-        transform: translateX(0);
-    }
-    
-    100% {
-        transform: translateX(-2000px);
-    }
-}
+.btn {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    padding: 10px;
+    border: none;
+    border-radius: 50%;
+    z-index: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    font-size: 18px;
+  }
+  
+  .btn:active {
+    transform: scale(1.1);
+  }
+  
+  .btn-prev {
+    top: 45%;
+    left: 2%;
+  }
+  
+  .btn-next {
+    top: 45%;
+    right: 2%;
+  }

@@ -1,17 +1,34 @@
-element = document.getElementById("one")
-var btnLeft = document.getElementById("btn-left")
-var btnRight = document.getElementById("btn-right")
-function animate() {
-if(element)
-{
-element.classList.add("slide-animation")
-}
-}
+"use strict";
+const slides = document.querySelectorAll(".slide");
 
+let counter = 0;
+let slidesCount = slides.length - 1;
 
-setTimeout(animate, 2000);
+const nextSlide = document.querySelector(".btn-next");
+const prevSlide = document.querySelector(".btn-prev");
 
-if(btnLeft && one && two && three && four && five && six)
-{
-    btnLeft.addEventListener("click", animate);
-}
+nextSlide.addEventListener("click", function () {
+    if(counter === slidesCount){
+        counter = 0;
+    }
+    else{
+    counter++;
+    }
+
+    slides.forEach((slide, index) => {
+        slide.style.transform = `translateX(${100 * (index - counter)}%)`;
+    });
+});
+
+prevSlide.addEventListener("click", function () {
+    if(counter === 0){
+        counter = slidesCount;
+    }
+    else{
+    counter--;
+    }
+    
+    slides.forEach((slide, index) => {
+        slide.style.transform = `translateX(${100 * (index - counter)}%)`;
+    });
+});
