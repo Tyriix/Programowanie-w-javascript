@@ -3,20 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" />
     <title>Document</title>
 </head>
 <body style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
     <img src="5b85aa55588bbd1e2255b197b94e7191.jpg" alt="drumkit">
-    <audio src="/drumkit/sounds/clap.wav" id="boom"></audio>
+    <audio src="/drumkit/sounds/boom.wav" id="boom"></audio>
     <audio src="/drumkit/sounds/clap.wav" id="clap"></audio>
-    <audio src="/drumkit/sounds/clap.wav" id="hihat"></audio>
-    <audio src="/drumkit/sounds/clap.wav" id="kick"></audio>
-    <audio src="/drumkit/sounds/clap.wav" id="openhat"></audio>
-    <audio src="/drumkit/sounds/clap.wav" id="ride"></audio>
-    <audio src="/drumkit/sounds/clap.wav" id="snare"></audio>
-    <audio src="/drumkit/sounds/clap.wav" id="tink"></audio>
-    <audio src="/drumkit/sounds/clap.wav" id="tom"></audio>
-    <script src="jquery-3.6.1.min.js"></script>
-    <script src="drumkit.js"></script>
+    <audio src="/drumkit/sounds/hihat.wav" id="hihat"></audio>
+    <audio src="/drumkit/sounds/kick.wav" id="kick"></audio>
+    <audio src="/drumkit/sounds/openhat.wav" id="openhat"></audio>
+    <audio src="/drumkit/sounds/ride.wav" id="ride"></audio>
+    <audio src="/drumkit/sounds/snare.wav" id="snare"></audio>
+    <audio src="/drumkit/sounds/tink.wav" id="tink"></audio>
+    <audio src="/drumkit/sounds/tom.wav" id="tom"></audio>
+    <h1>Drumkit</h1>
+    <div class="drumkit">
+        <div class="drum-sound">
+            <span>Boom</span>
+            <button class="boom-button"></button>
+            <span>Q</span>
+        </div>
+        <div class="drum-sound">
+            <span>Clap</span>
+            <button class="clap-button"></button>
+            <span>W</span>
+        </div>
+        <div class="drum-sound">
+            <span>Hihat</span>
+            <button class="hihat-button"></button>
+            <span>E</span>
+        </div>
+        <div class="drum-sound">
+            <span>Kick</span>
+            <button class="kick-button"></button>
+            <span>R</span>
+        </div>
+        <div class="drum-sound">
+            <span>Openhat</span>
+            <button class="openhat-button"></button>
+            <span>T</span>
+        </div>
+        <div class="drum-sound">
+            <span>Ride</span>
+            <button class="ride-button"></button>
+            <span>Y</span>
+        </div>
+        <div class="drum-sound">
+            <span>Snare</span>
+            <button class="snare-button"></button>
+            <span>U</span>
+        </div>
+        <div class="drum-sound">
+            <span>Tink</span>
+            <button class="tink-button"></button>
+            <span>I</span>
+        </div>
+        <div class="drum-sound">
+            <span>Tom</span>
+            <button class="tom-button"></button>
+            <span>O</span>
+        </div>
+    </div>
+    <script src="main.js"></script>
 </body>
 </html>
