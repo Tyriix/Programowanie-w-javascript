@@ -1,5 +1,9 @@
 document.addEventListener('keypress', onKeyPress)
-
+const startMetronomeBtn = document.querySelector('.start-button');
+const stopMetronomeBtn = document.querySelector('.stop-button');
+startMetronomeBtn.addEventListener("click", startMetronome);
+stopMetronomeBtn.addEventListener("click", stopMetronome);
+var play = true;
 function onKeyPress(ev){
     console.log(ev);
     var keyCodes = ["q", "w", "e", "r", "t", "y", "u", "i", "o"] //w, a, s, d, c,  | y, g, j, k
@@ -54,4 +58,31 @@ function soundActive(sound){
     setTimeout(() => {
         button.classList.remove("active");
     }, 100);
+}
+
+
+function startMetronome(){
+    play = true;
+    function getTempo(){
+        const tempo = document.querySelector('#tempo');
+        return 1000/(tempo.value/60)
+    }
+    let interval = getTempo();
+    let started = Date.now();
+    const snd = document.querySelector('#tink');
+    snd.play();
+    setTimeout(step, interval);
+    function step(){
+        if (play) {
+            snd.play();
+            var now = Date.now();
+            var diff = now - started - interval;
+            interval = getTempo();
+            started = now;
+            setTimeout(step, interval - diff);
+        }
+    }
+}
+function stopMetronome(){
+    play = false;
 }
