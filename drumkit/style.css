@@ -24,7 +24,7 @@ span{
     background-color: white;
 }
 .active{
-    background-color: #009b27;
+    background-color: #009b27 !important;
 }
 #tempo{
     height: 20px;
@@ -45,4 +45,10 @@ span{
 }
 .options-buttons{
     margin-top: 10px;
+}
+.btn-recording::after{
+    content: "Start";
+}
+.btn-recording-active::after{
+    content: "Stop";
 }

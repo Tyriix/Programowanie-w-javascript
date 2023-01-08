@@ -1,9 +1,13 @@
 document.addEventListener('keypress', onKeyPress)
 const startMetronomeBtn = document.querySelector('.start-button');
 const stopMetronomeBtn = document.querySelector('.stop-button');
+const recordingBtn = document.querySelector('.btn-recording');
 startMetronomeBtn.addEventListener("click", startMetronome);
 stopMetronomeBtn.addEventListener("click", stopMetronome);
-var play = true;
+recordingBtn.addEventListener("click", startEventHandle);
+let play = true;
+let isRecording = false;
+
 function onKeyPress(ev){
     console.log(ev);
     var keyCodes = ["q", "w", "e", "r", "t", "y", "u", "i", "o"] //w, a, s, d, c,  | y, g, j, k
@@ -41,6 +45,9 @@ function onKeyPress(ev){
             return;
     }
         playSound(audioId)
+    if(isRecording == true){
+        saveSound(audioId);
+    }
 }
 
 function playSound(sound){
@@ -59,7 +66,6 @@ function soundActive(sound){
         button.classList.remove("active");
     }, 100);
 }
-
 
 function startMetronome(){
     play = true;
@@ -85,4 +91,57 @@ function startMetronome(){
 }
 function stopMetronome(){
     play = false;
+}
+
+const channels = [];
+const channel = {
+    startTime: 0,
+    endTime: 0,
+    sounds: []
+}
+function startRecordingChannel(){
+    channel.startTime = Date.now();
+    console.log(channel.startTime)
+}
+function recordingStatus(){
+    if(isRecording == false){
+        isRecording = true;
+        recordingBtn.setAttribute("class", "btn-recording-active");
+        console.log("Recording")
+    } else {
+        isRecording = false;
+        recordingBtn.setAttribute("class", "btn-recording");
+        console.log("Not recording")
+        stopRecordingChannel();
+    }
+}
+function startEventHandle(){
+    startRecordingChannel();
+    recordingStatus();
+}
+function saveSound(sound){
+    channel.sounds.push([sound, Date.now()]);
+    console.log(channel)
+}
+
+function stopRecordingChannel(){
+    channel.endTime = Date.now();
+    if (channel.sounds.length>0) {
+        const recordingWithTimeStamps = []
+
+        for (let i = 0; i < channel.sounds.length; i++) {
+            recordingWithTimeStamps.push([channel.sounds[i][0], channel.sounds[i][1]-channel.startTime])
+        }
+
+        channels.push(recordingWithTimeStamps)
+        console.log(channels)
+    }
+}
+function playChannel(id){
+    const channel = channels.find(el => el.id == id)
+    console.log(channel)
+    // channel.forEach(element => {
+    //     const delay = element[1]
+    //     setTimeout(function(){playSound(element[0])}, element[1])
+    // });
 }
