@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/4ce5a84376.js" crossorigin="anonymous"></script>    
+    <title>Notekeep</title>
+</head>
+<body>
+    <div class="notes">
+        <div class="notes__first-section">
+            <div class="notes__topbar">
+                <input type="text" placeholder="Search Note"> <button class="btn-search" type="button">Search</button>
+            </div>
+            <div class="notes__create">
+                <div class="notes__create-top">
+                    <input class="note-title" type="text" placeholder="Title">
+                    <div class="notes__create-top-icons">
+                        <button class="btn-pin"><i class="fa-solid fa-thumbtack" id="pin"></i> </button> 
+                        <input class="note-color" type="color" value="#ffffff">
+                        <input class="note-pin" id="pin-checkbox" type="checkbox">
+                    </div>
+                </div>
+                <div class="notes__create-bottom">
+                    <textarea class="note-body" placeholder="Create note..."></textarea>
+                    <button class="btn-submit" type="button">Submit</button>
+                </div> 
+            </div>
+        </div>
+        <div class="notes__second-section">
+            <span>Pinned</span>
+            <div class="notes__list" id="notes__list-pinned">
+                
+                <div class="notes__list-item" id="#hidden-note">
+                    <h4 id="item-title">Tytuł</h4>
+                    <p id="item-body">Treść</p>
+                    <span id="item-date">Data</span>
+                </div>
+            </div>
+            <span>Other</span>
+            <div class="notes__list" id="notes__list-normal">
+                <div class="notes__list-item" id="#hidden-note">
+                    <h4 id="item-title">Tytuł</h4>
+                    <p id="item-body">Treść</p>
+                    <span id="item-date">Data</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js" type="module"></script>
+</body>
+</html>
