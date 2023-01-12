@@ -9,6 +9,18 @@
     <title>Notekeep</title>
 </head>
 <body>
+    <div class="note__details" id="hidden">
+        <div class="note__details-card" id="hidden-details">
+            <h4 id="details-title">Tytuł</h4>
+            <p id="details-body">Treść</p>
+            <span id="details-date">Data</span>
+
+            <div class="note__details-card-buttons">
+                <button class="btn-edit" type="button">Edit</button>
+                <button class="btn-delete" type="button">Delete</button>
+            </div>
+        </div>
+    </div>
     <div class="notes">
         <div class="notes__first-section">
             <div class="notes__topbar">
@@ -47,7 +59,9 @@
                     <span id="item-date">Data</span>
                 </div>
             </div>
+            
         </div>
+        
     </div>
     <script src="main.js" type="module"></script>
 </body>

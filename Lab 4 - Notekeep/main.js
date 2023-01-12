@@ -8,10 +8,23 @@ const submitBtn = document.querySelector('.btn-submit')
 const colorPicker = document.querySelector('.note-color')
 const pinBtn = document.querySelector('.btn-pin')
 const notePin = document.querySelector('.note-pin');
+const detailsBackground = document.querySelector('.note__details');
+const deleteBtn = document.querySelector('.btn-delete');
+
+
 
 submitBtn.addEventListener('click', CreateNote);
 colorPicker.addEventListener('change', ChangeNoteColor);
 pinBtn.addEventListener('click', PinNote);
+detailsBackground.addEventListener('click', function(){
+    const ex = document.querySelector("#hidden-details");
+    const detailsEx = document.querySelector(".note__details");
+
+    ex.style.display = "none";
+    detailsEx.style.display = "none";
+});
+deleteBtn.addEventListener('click', deleteNote);
+
 
 function CreateNote(){
     const note = new NoteAPI();
@@ -70,6 +83,9 @@ function showNote(note){
     else{
         document.querySelector("#notes__list-normal").appendChild(newNote);
     }
+    newNote.addEventListener('click', function(){
+        showDetails(note);
+    });
 }
 
 function showNotes(){
@@ -77,4 +93,31 @@ function showNotes(){
     notes.forEach(note => {
         showNote(note);
     });
+}
+
+function showDetails(note){
+    const ex = document.querySelector("#hidden-details");
+    const detailsEx = document.querySelector(".note__details");
+
+    ex.style.display = "flex";
+    detailsEx.style.display = "flex";
+
+    var date = note.updated;
+
+    ex.querySelector("#details-title").innerText = note.title;
+    ex.querySelector("#details-body").innerText = note.body;
+    ex.querySelector("#details-date").innerText = date.substring(0, 10);
+    ex.style.backgroundColor = note.color;
+    const deleteBtn = ex.querySelector(".btn-delete");
+    console.log(deleteBtn);
+    deleteBtn.addEventListener('click', function(){
+        deleteNote(note.id);
+        showNotes();
+
+    });
+}
+
+function deleteNote(id){
+    console.log(id)
+    NoteAPI.deleteNoteById(id);
 }

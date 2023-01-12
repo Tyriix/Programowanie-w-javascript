@@ -129,6 +129,33 @@ input[type=color]::-webkit-color-swatch {
     border: none;
     background: none;
 }
+.note__details{
+    display:flex;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background-color:rgba(0, 0, 0, 0.5);
+}
+.note__details-card{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin-top: 15px;
+    margin-right: 10px;
+    border: 1px solid grey;
+    border-radius: 10px;
+    width: 280px;
+    text-overflow: ellipsis;
+    max-height: 300px;
+}
+#hidden-details{
+    display: none;
+}
+#hidden{
+    display: none;
+}
 #item-body{
     max-height: 200px;
     text-overflow: ellipsis;
