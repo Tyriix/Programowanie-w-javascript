@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="weather__container">
+        <div class="search__container">
+            <input class="search-input" id="search-input" type="text" list="cities">
+            <datalist id="cities-autocomplete">
+                <option id="city-option"></option>
+            </datalist>
+            <button class="search-btn" id="add-btn">Add</button>
+        </div>
+        <div class="cities__list">
+            <div class="cities__list-item">
+                <div class="cities__list-item-top">
+                    <div class="item-row">
+                        <span class="city-name" id="city-name">Kraków</span>
+                    </div>
+                    <div class="item-row">
+                        <img class="weather-image" id="weather-image" src="https://www.freeiconspng.com/thumbs/cloud-icon/cloud-icon-8.png" alt="">
+                        <h3 class="city-temperature" id="city-temperature">30&#8451</h3>
+                    </div>
+                </div>
+                <div class="cities__list-item-bottom">
+                    <div class="item-row">
+                        <span>Humidity: </span>
+                        <span class="bottom-span" id="city-humidity">30%</span> 
+                    </div>
+                    <div class="item-row">
+                        <span class="bottom-span" id="city-weather">Cloudy</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="main.js" type="module"></script>
+</html>
