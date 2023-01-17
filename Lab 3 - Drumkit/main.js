@@ -2,8 +2,17 @@ document.addEventListener('keypress', onKeyPress)
 const startMetronomeBtn = document.querySelector('.start-button');
 const stopMetronomeBtn = document.querySelector('.stop-button');
 const recordingBtn = document.querySelector('.btn-recording');
-startMetronomeBtn.addEventListener("click", startMetronome);
-stopMetronomeBtn.addEventListener("click", stopMetronome);
+
+startMetronomeBtn.addEventListener("click", function(){
+    startMetronome();
+    startMetronomeBtn.disabled = true;
+    stopMetronomeBtn.disabled = false;
+});
+stopMetronomeBtn.addEventListener("click", function() {
+    play = false;
+    startMetronomeBtn.disabled = false;
+    stopMetronomeBtn.disabled = true;
+});
 recordingBtn.addEventListener("click", startEventHandle);
 let play = true;
 let isRecording = false;
@@ -69,15 +78,16 @@ function soundActive(sound){
 
 function startMetronome(){
     play = true;
+    const snd = document.querySelector('#tink');
+
     function getTempo(){
         const tempo = document.querySelector('#tempo');
         return 1000/(tempo.value/60)
     }
+
     let interval = getTempo();
     let started = Date.now();
-    const snd = document.querySelector('#tink');
-    snd.play();
-    setTimeout(step, interval);
+
     function step(){
         if (play) {
             snd.play();
@@ -86,11 +96,9 @@ function startMetronome(){
             interval = getTempo();
             started = now;
             setTimeout(step, interval - diff);
+            }
         }
-    }
-}
-function stopMetronome(){
-    play = false;
+    setTimeout(step, interval);
 }
 
 const channels = [];
