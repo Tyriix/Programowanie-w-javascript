@@ -2,6 +2,7 @@ document.addEventListener('keypress', onKeyPress)
 const startMetronomeBtn = document.querySelector('.start-button');
 const stopMetronomeBtn = document.querySelector('.stop-button');
 const recordingBtn = document.querySelector('.btn-recording');
+const recordingList = document.querySelector('.channel-recordings');
 
 startMetronomeBtn.addEventListener("click", function(){
     startMetronome();
@@ -104,6 +105,7 @@ function startMetronome(){
 let isRecording = false;
 const channels = [];
 const channel = {
+    id: null,
     startTime: 0,
     endTime: 0,
     notes: []
@@ -125,24 +127,24 @@ function stopRecordingChannel(){
     channel.endTime = Date.now();
     if (channel.notes.length>0) {
         const channelWTS = []
-
+        channelWTS.id = channels.length;
         for (let i = 0; i < channel.notes.length; i++) {
             channelWTS.push([channel.notes[i][0], channel.notes[i][1]- channel.startTime])
         }
 
         channels.push(channelWTS)
+        showChannel(channelWTS);
     }
+    
 }
 
 function recordingState(){
     if(isRecording == false){
         isRecording = true;
         recordingBtn.setAttribute("class", "btn-recording-active");
-        console.log("Recording")
     } else {
         isRecording = false;
         recordingBtn.setAttribute("class", "btn-recording");
-        console.log("Not recording")
         stopRecordingChannel();
     }
 }
@@ -150,7 +152,19 @@ function recordingState(){
 
 function playChannel(id){
     const channel = channels[id];
+    
     channel.forEach(el => {
        setTimeout(function(){playSound(el[0])}, el[1])
     });
 }
+
+function showChannel(channel){
+    const model = document.querySelector("#hidden-recording")
+    const newRecording = model.cloneNode(true);
+    newRecording.querySelector("#channel-title").innerText = `Channel ${channel.id + 1}`
+    newRecording.querySelector("#btn-play").addEventListener("click", function(){
+        playChannel(channel.id);
+    });
+    recordingList.appendChild(newRecording);   
+}
+

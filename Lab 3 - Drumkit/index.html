@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="style.css" rel="stylesheet" />
     <title>Document</title>
-</head>
-<body style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-    <img src="5b85aa55588bbd1e2255b197b94e7191.jpg" alt="drumkit">
+  </head>
+  <body>
     <audio src="/Lab 3 - Drumkit/sounds/boom.wav" id="boom"></audio>
     <audio src="/Lab 3 - Drumkit/sounds/clap.wav" id="clap"></audio>
     <audio src="/Lab 3 - Drumkit/sounds/hihat.wav" id="hihat"></audio>
@@ -17,72 +16,86 @@
     <audio src="/Lab 3 - Drumkit/sounds/snare.wav" id="snare"></audio>
     <audio src="/Lab 3 - Drumkit/sounds/tink.wav" id="tink"></audio>
     <audio src="/Lab 3 - Drumkit/sounds/tom.wav" id="tom"></audio>
-    <h1>Drumkit</h1>
-    <div class="drumkit">
-        <div class="drum-sound">
+    <div class="drumkit-wrapper">
+      <div class="drumkit-image">
+      </div>
+      <div class="drumkit">
+        <div class="metronome">
+          <h1>Metronome</h1>
+          <div class="met-options">
+            <input id="tempo" value="100" />
+            <div class="options-buttons">
+              <button class="start-button" id="btn-met">Start</button>
+              <button class="stop-button" disabled="true">Stop</button>
+            </div>
+          </div>
+        </div>
+        <div class="drum-sounds">
+          <div class="drum-sound">
             <span>Boom</span>
             <button class="boom-button"></button>
             <span>Q</span>
-        </div>
-        <div class="drum-sound">
+          </div>
+          <div class="drum-sound">
             <span>Clap</span>
             <button class="clap-button"></button>
             <span>W</span>
-        </div>
-        <div class="drum-sound">
+          </div>
+          <div class="drum-sound">
             <span>Hihat</span>
             <button class="hihat-button"></button>
             <span>E</span>
-        </div>
-        <div class="drum-sound">
+          </div>
+          <div class="drum-sound">
             <span>Kick</span>
             <button class="kick-button"></button>
             <span>R</span>
-        </div>
-        <div class="drum-sound">
+          </div>
+          <div class="drum-sound">
             <span>Openhat</span>
             <button class="openhat-button"></button>
             <span>T</span>
-        </div>
-        <div class="drum-sound">
+          </div>
+          <div class="drum-sound">
             <span>Ride</span>
             <button class="ride-button"></button>
             <span>Y</span>
-        </div>
-        <div class="drum-sound">
+          </div>
+          <div class="drum-sound">
             <span>Snare</span>
             <button class="snare-button"></button>
             <span>U</span>
-        </div>
-        <div class="drum-sound">
+          </div>
+          <div class="drum-sound">
             <span>Tink</span>
             <button class="tink-button"></button>
             <span>I</span>
-        </div>
-        <div class="drum-sound">
+          </div>
+          <div class="drum-sound">
             <span>Tom</span>
             <button class="tom-button"></button>
             <span>O</span>
+          </div>
         </div>
-    </div>
-    <div class="met-chan">
-        <div class="metronome">
-            <h1>Metronome</h1>
-            <div class="met-options">
-                <input id="tempo" value="100">
-                <div class="options-buttons">
-                    <button class="start-button" id="btn-met">Start</button>
-                    <button class="stop-button" disabled="true">Stop</button>
+      </div>
+      <div class="channels">
+        <h1>Channels</h1>
+        <div class="channel-buttons">
+          <button class="btn-recording"></button>
+        </div>
+        <div class="channel-recordings">
+            <div class="recording" id="hidden-recording">
+                <div class="recording-top">
+                  <span id="channel-title">Channel 1</span>
                 </div>
-            </div>
+                <div class="recording-bottom">
+                  <button class="btn-play" id="btn-play"></button>
+                </div>
+              </div>
         </div>
-        <div class="channels">
-            <h1>Channels</h1>
-            <div class="channel-buttons">
-                <button class="btn-recording"></button>
-            </div>
-        </div>
+      </div>
     </div>
+
     <script src="main.js"></script>
-</body>
+  </body>
 </html>

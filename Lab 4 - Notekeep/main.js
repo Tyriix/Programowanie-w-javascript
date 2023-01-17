@@ -69,8 +69,8 @@ function clearNote(){
     }
 }
 function showNote(note){
-    const ex = document.getElementById("#hidden-note");
-    const newNote = ex.cloneNode(true);
+    const model = document.getElementById("#hidden-note");
+    const newNote = model.cloneNode(true);
     var date = note.updated;
     
     newNote.querySelector("#item-title").innerText = note.title;
