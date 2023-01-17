@@ -15,11 +15,10 @@ stopMetronomeBtn.addEventListener("click", function() {
 });
 recordingBtn.addEventListener("click", startEventHandle);
 let play = true;
-let isRecording = false;
+
 
 function onKeyPress(ev){
-    console.log(ev);
-    var keyCodes = ["q", "w", "e", "r", "t", "y", "u", "i", "o"] //w, a, s, d, c,  | y, g, j, k
+    var keyCodes = ["q", "w", "e", "r", "t", "y", "u", "i", "o"];
     let audioId = '';
     switch(keyCodes.find(el => el===ev.key)){
         case 'q':
@@ -53,23 +52,24 @@ function onKeyPress(ev){
             console.log(`No case found`)
             return;
     }
-        playSound(audioId)
-    if(isRecording == true){
+    if(isRecording === true && audioId != undefined){
         saveSound(audioId);
+        playSound(audioId);
+    }
+    else
+    {
+        playSound(audioId);
     }
 }
 
 function playSound(sound){
-    console.log(sound)
     const audioTag = document.querySelector(`#${sound}`);
     audioTag.currentTime = 0
     soundActive(sound)
     audioTag.play()
 }
 function soundActive(sound){
-    console.log(sound);
     const button = document.querySelector(`.${sound}-button`);
-    console.log(button);
     button.classList.add("active");
     setTimeout(() => {
         button.classList.remove("active");
@@ -101,17 +101,40 @@ function startMetronome(){
     setTimeout(step, interval);
 }
 
+let isRecording = false;
 const channels = [];
 const channel = {
     startTime: 0,
     endTime: 0,
-    sounds: []
+    notes: []
 }
-function startRecordingChannel(){
+
+function saveSound(sound){
+    channel.notes.push([sound, Date.now()]);
+}
+function startEventHandle(){
+    recordingState();
+    startRecording();
+}
+
+function startRecording(){
+    channel.notes = [];
     channel.startTime = Date.now();
-    console.log(channel.startTime)
 }
-function recordingStatus(){
+function stopRecordingChannel(){
+    channel.endTime = Date.now();
+    if (channel.notes.length>0) {
+        const channelWTS = []
+
+        for (let i = 0; i < channel.notes.length; i++) {
+            channelWTS.push([channel.notes[i][0], channel.notes[i][1]- channel.startTime])
+        }
+
+        channels.push(channelWTS)
+    }
+}
+
+function recordingState(){
     if(isRecording == false){
         isRecording = true;
         recordingBtn.setAttribute("class", "btn-recording-active");
@@ -123,33 +146,11 @@ function recordingStatus(){
         stopRecordingChannel();
     }
 }
-function startEventHandle(){
-    startRecordingChannel();
-    recordingStatus();
-}
-function saveSound(sound){
-    channel.sounds.push([sound, Date.now()]);
-    console.log(channel)
-}
 
-function stopRecordingChannel(){
-    channel.endTime = Date.now();
-    if (channel.sounds.length>0) {
-        const recordingWithTimeStamps = []
 
-        for (let i = 0; i < channel.sounds.length; i++) {
-            recordingWithTimeStamps.push([channel.sounds[i][0], channel.sounds[i][1]-channel.startTime])
-        }
-
-        channels.push(recordingWithTimeStamps)
-        console.log(channels)
-    }
-}
 function playChannel(id){
-    const channel = channels.find(el => el.id == id)
-    console.log(channel)
-    // channel.forEach(element => {
-    //     const delay = element[1]
-    //     setTimeout(function(){playSound(element[0])}, element[1])
-    // });
+    const channel = channels[id];
+    channel.forEach(el => {
+       setTimeout(function(){playSound(el[0])}, el[1])
+    });
 }
