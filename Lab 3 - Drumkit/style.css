@@ -90,6 +90,9 @@ span{
 .btn-recording-active::after{
     content: "Stop recording";
 }
+.btn-play-selected::after{
+    content: "Play selected";
+}
 .recording{
     margin-top: 15px;
     display: flex;
