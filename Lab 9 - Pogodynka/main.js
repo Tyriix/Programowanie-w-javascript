@@ -1,5 +1,4 @@
 import WeatherAPI from "./WeatherAPI.js";
-import GeoAPI from "./GeoAPI.js";
 
 document.addEventListener("DOMContentLoaded", function () {
   ShowCities();
@@ -9,22 +8,8 @@ const searchInput = document.querySelector("#search-input");
 const addBtn = document.querySelector("#add-btn");
 
 const weatherApiKey = "ed5eba6f257f1a861d12ad59c58ba099";
-const geoApiKey = "49a4c9be65594e4d8bc09e2c15850986";
 
 addBtn.addEventListener("click", AddCity);
-searchInput.addEventListener("input", function(){
-    const cities = []
-    const datalist = document.getElementById("cities-autocomplete")
-    const geo = GeoAPI.GeocoderAutocomplete(searchInput.value, geoApiKey)
-    
-    // cities.forEach(city => {
-    //     let option = document.createElement("option");
-    //     option.value = city;
-    //     datalist.appendChild(option);
-    // });
-})
-
-
 
 function AddCity() {
   fetch(
