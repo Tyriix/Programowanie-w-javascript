@@ -15,12 +15,13 @@ stopMetronomeBtn.addEventListener("click", function () {
   startMetronomeBtn.disabled = false;
   stopMetronomeBtn.disabled = true;
 });
+
 recordingBtn.addEventListener("click", startEventHandle);
 playSelectedBtn.addEventListener("click", playSelectedChannels);
 
 let btnState = true;
 let isRecording = false;
-const channels = [];
+let channels = [];
 const channel = {
   id: null,
   startTime: 0,
@@ -99,7 +100,7 @@ function startMetronome() {
   let started = Date.now();
 
   function step() {
-    if (play) {
+    if (btnState) {
       snd.play();
       var now = Date.now();
       var diff = now - started - interval;
@@ -155,17 +156,24 @@ function stopRecordingChannel() {
 
 //SHOWING CHANNELS
 function showChannel(channel) {
+
   const model = document.querySelector(".recording");
   const newRecording = model.cloneNode(true);
+  newRecording.classList = "recording-cloned";
   newRecording.querySelector("#channel-title").innerText = `Channel ${
     channel.id + 1
   }`;
-  newRecording.querySelector("#channel-checkbox").setAttribute("id", `#channel-checkbox${channel.id}`)
+  newRecording.querySelector("#channel-checkbox").setAttribute("id", `channel-checkbox-cloned`)
+  newRecording.querySelector("#channel-checkbox-cloned").setAttribute("value", `${channel.id}`);
   newRecording
     .querySelector("#btn-play")
     .addEventListener("click", function () {
       playChannel(channel.id);
     });
+  newRecording.querySelector("#btn-delete")
+  .addEventListener("click", function (){
+    deleteChannel(newRecording, channel.id);
+  });
   recordingList.appendChild(newRecording);
 }
 
@@ -180,17 +188,17 @@ function playChannel(id) {
 }
 
 function playSelectedChannels() {
-  const checkboxes = document.querySelectorAll(".checkbox");
-  let checkboxNodes = [].slice.call(checkboxes, 1);
-
-  checkboxNodes.forEach(ch => {
-    if(ch.checked){
-        console.log(ch.id);
+  const checkboxes = document.querySelectorAll("#channel-checkbox-cloned");
+  checkboxes.forEach(ch =>{
+    if(ch.checked)
+    {
+      playChannel(ch.value);
     }
-  })
-//   checkboxes.forEach(element => {
-//     if (element.checked) {
-//         playChannel(element.id.slice(-1))
-//     }
-//     });
+  });
+  
+}
+
+//DELETING CHANNELS
+function deleteChannel(recording){
+  recording.remove()
 }
