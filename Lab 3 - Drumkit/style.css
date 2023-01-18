@@ -6,7 +6,7 @@ h1{
     color: white;
 }
 .drumkit-image{
-    background-image:url("./drumkit.png");
+    background-image:url("./img/drumkit.png");
     width: 720px;
     height: 480px;
 }
@@ -155,4 +155,18 @@ span{
 }
 .btn-delete:hover::after{
     color: firebrick;
+}
+#net-status {
+    color: white;
+    height: 30px;
+    position: sticky;
+    top: 0;
+    padding: 10px;
+}
+#status-online {
+    color: lightgreen;
+}
+
+#status-offline {
+    color: lightcoral;
 }
