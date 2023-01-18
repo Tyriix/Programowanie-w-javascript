@@ -1,0 +1,36 @@
+body{
+    margin: 0;
+    background-color:burlywood;
+}
+canvas{
+    background-color: white;
+    border: 2px solid navy;
+}
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+.options{
+    display: flex;
+    flex-direction: column;
+    width: 720px;
+    margin-bottom: 40px;
+    align-items: center;
+}
+.options-row{
+    display: flex;
+    flex-direction: row;
+}
+.label-title{
+    text-align: center;
+    width: 170px;
+}
+.btn-start-stop{
+    margin-top: 15px;
+    width: 200px;
+    height: 40px;
+}
