@@ -10,6 +10,7 @@ export default class NoteAPI{
         if(existing){
             existing.title = noteToSave.title;
             existing.body = noteToSave.body;
+            existing.tags = noteToSave.tags;
             existing.checked = noteToSave.checked;
             existing.color = noteToSave.color;
             existing.updated = new Date().toISOString();

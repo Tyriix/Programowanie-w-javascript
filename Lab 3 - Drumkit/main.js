@@ -172,7 +172,7 @@ function showChannel(channel) {
     });
   newRecording.querySelector("#btn-delete")
   .addEventListener("click", function (){
-    deleteChannel(newRecording, channel.id);
+    deleteChannel(newRecording);
   });
   recordingList.appendChild(newRecording);
 }

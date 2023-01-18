@@ -11,20 +11,34 @@
 <body>
     <div class="note__details" id="hidden">
         <div class="note__details-card" id="hidden-details">
-            <h4 id="details-title">Tytuł</h4>
-            <p id="details-body">Treść</p>
-            <span id="details-date">Data</span>
-
-            <div class="note__details-card-buttons">
-                <button class="btn-edit" type="button">Edit</button>
-                <button class="btn-delete" type="button">Delete</button>
+            <div class="details-card-row">
+                <span class="details-span">Title:</span>
+                <input class="details-title" type="text" id="details-title" value=""></input>
             </div>
+            <div class="details-card-row">
+                <span class="details-span">Content:</span>
+                <textarea class="details-body" id="details-body" value=""></textarea>
+            </div>
+            <div class="details-card-row">
+                <span class="details-span">Tags:</span>
+                <textarea class="details-tags" id="details-tags" value=""></textarea>
+
+            </div>
+            <div class="details-card-row">
+                <span class="details-span">Date:</span>
+                <span class="details-date" id="details-date">Data</span>
+                <div class="row-buttons">
+                    <button class="btn-edit" type="button">Edit</button>
+                    <button class="btn-delete" type="button">Delete</button>
+                    <button class="btn-close" type="button">Close</button>
+                </div>
+            </div>       
         </div>
     </div>
     <div class="notes">
         <div class="notes__first-section">
             <div class="notes__topbar">
-                <input type="text" placeholder="Search Note"> <button class="btn-search" type="button">Search</button>
+                <span class="topbar-logo">Notekeep</span>
             </div>
             <div class="notes__create">
                 <div class="notes__create-top">
@@ -36,7 +50,10 @@
                     </div>
                 </div>
                 <div class="notes__create-bottom">
-                    <textarea class="note-body" placeholder="Create note..."></textarea>
+                    <div class="bottom-inputs">
+                        <textarea class="note-body" placeholder="Create note..."></textarea>
+                        <textarea class="note-tags" placeholder="Add tags (separate with space)"></textarea>
+                    </div>              
                     <button class="btn-submit" type="button">Submit</button>
                 </div> 
             </div>
@@ -45,20 +62,29 @@
             <span>Pinned</span>
             <div class="notes__list" id="notes__list-pinned">
                 
-                <div class="notes__list-item" id="#hidden-note">
+                <div class="notes__list-item">
                     <h4 id="item-title">Tytuł</h4>
                     <p id="item-body">Treść</p>
                     <span id="item-date">Data</span>
                 </div>
             </div>
-            <span>Other</span>
+            <span>Normal</span>
             <div class="notes__list" id="notes__list-normal">
-                <div class="notes__list-item" id="#hidden-note">
+                <div class="notes__list-item">
                     <h4 id="item-title">Tytuł</h4>
                     <p id="item-body">Treść</p>
                     <span id="item-date">Data</span>
                 </div>
             </div>
+            <span>Search</span>
+            <div class="search-bar">
+                <input class="search-input" type="text" placeholder="Search by tags"> 
+                <button class="btn-search" type="button">Search</button>
+            </div>
+            <div class="notes__list" id="notes__list-search">
+                
+            </div>
+            
             
         </div>
         
